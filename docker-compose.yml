@@ -17,7 +17,7 @@ services:
       test: ["CMD","mysqladmin","ping","-h","root","-pcimatec"]
       interval: 5s
       timeout: 5s
-      retries:
+      retries: 10
   
   app:
     build: .
