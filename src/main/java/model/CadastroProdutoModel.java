@@ -1,5 +1,7 @@
 package model;
 
+import java.math.BigDecimal;
+
 public class CadastroProdutoModel {
     
     private int id;
@@ -10,8 +12,8 @@ public class CadastroProdutoModel {
     private String dataFabricacao;
     private String dataVencimento;
     private long quantidade;
-    private String valor;
-    private String total;
+    private BigDecimal valor;
+    private BigDecimal total;
     private String status;
 
     public String getCodigoBarras() {
@@ -70,22 +72,22 @@ public class CadastroProdutoModel {
         this.quantidade = quantidade;
     }
 
-    public String getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(String valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 
-    public String getTotal() {
+    public BigDecimal getTotal() {
         return total;
     }
 
-    public void setTotal(String total) {
+    public void setTotal(BigDecimal total) {
         this.total = total;
     }
-    
+
     public String getStatus() {
         return status;
     }
@@ -93,5 +95,4 @@ public class CadastroProdutoModel {
     public void setStatus(String status) {
         this.status = status;
     }
-    
 }

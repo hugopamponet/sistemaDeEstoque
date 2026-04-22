@@ -27,8 +27,8 @@ public class CadastroProdutosDAO {
             stmt.setDate(5, java.sql.Date.valueOf(produto.getDataFabricacao()));
             stmt.setDate(6, java.sql.Date.valueOf(produto.getDataVencimento()));
             stmt.setLong(7, produto.getQuantidade());
-            stmt.setString(8, produto.getValor());
-            stmt.setString(9, produto.getTotal());
+            stmt.setBigDecimal(8, produto.getValor()); //Mudança para a aula de hoje
+            stmt.setBigDecimal(9, produto.getTotal()); //Mudança para a aula de hoje
             stmt.setString(10, produto.getStatus());
             
             stmt.executeUpdate();
@@ -57,8 +57,8 @@ public class CadastroProdutosDAO {
                 p.setFabricante(rs.getString("fabricante"));
                 p.setMarca(rs.getString("marca"));
                 p.setQuantidade(rs.getLong("quantidade"));
-                p.setValor(rs.getString("valor"));
-                p.setTotal(rs.getString("total"));
+                p.setValor(rs.getBigDecimal("valor"));//Corrigir o tipo de String para BigDecimal
+                p.setTotal(rs.getBigDecimal("total"));//Corrigir o tipo de String para BigDecimal
                 p.setStatus(rs.getString("status"));
                 
                 lista.add(p);
