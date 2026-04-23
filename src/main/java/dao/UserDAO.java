@@ -4,23 +4,32 @@ import connection.ConnectionFactory;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import model.UserModel;
+import util.SenhaUtil;
 
 public class UserDAO {
     
     public boolean  validarLogin(UserModel userModel) {
         String sql = 
-                "SELECT * FROM users WHERE username= ? AND psw= ?";
+                "SELECT * FROM users WHERE username= ?";
         
         try (var con = ConnectionFactory.getConnection()){
                         
             PreparedStatement stmt =
                     con.prepareStatement(sql);
             stmt.setString(1, userModel.getUsername());
-            stmt.setString(2, userModel.getPassword());
             
             ResultSet rs = stmt.executeQuery();
             
-            return rs.next();
+            if(rs.next()) {
+                String hashBanco = rs.getString("psw");
+                
+                return SenhaUtil.verificarSenha(
+                        userModel.getPassword(),
+                        hashBanco
+                );
+            }
+            
+            return false;
    
         } catch (Exception e) {
             e.printStackTrace();
