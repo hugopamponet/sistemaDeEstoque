@@ -8,7 +8,7 @@ import util.SenhaUtil;
 
 public class UserDAO {
     
-    public boolean  validarLogin(UserModel userModel) {
+    public UserModel validarLogin(UserModel userModel) {
         String sql = 
                 "SELECT * FROM users WHERE username= ?";
         
